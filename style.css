@@ -1,3 +1,147 @@
+:root {
+    --card-height: 135px;
+    --card-width: 350px;
+    --card-padding: 0.7rem;
+    --common-border-radius: 0.5rem;
+    --common-card-spacing: 1rem;
+
+    --body-background-col: white;
+
+    --primary-colour: rgb(83, 133, 79);
+    --primary-text-colour: white;
+
+    --book-bg-col: rgb(234, 247, 224);
+    --book-title-col: rgb(0, 0, 0);
+    --book-author-col: rgb(44, 44, 44);
+    --book-id-col: rgb(136, 136, 136);
+
+    --form-text-input-bg-col: white;
+    --form-text-input-text-col: black;
+    --form-button-bg-col: rgb(19, 53, 16);
+
+    --top-row-height: calc(var(--card-height) + ((var(--card-padding) + var(var(--common-card-spacing)) * 2)));
+
+    --trash-ico-size: 1.3rem;
+}
+
 body {
-    background-color: gray;
+    background-color: var(--body-background-col);
+    font-family: Roboto, sans-serif;
+    font-size: 1.2rem;
+    padding: 0;
+    margin: 0;
+}
+
+.container {
+    display: grid;
+    grid-template-rows: var(--top-row-height) 1fr;
+}
+
+#library-form, .book {
+    box-shadow: 3px 3px 8px 4px rgba(0,0,0,0.2);
+}
+
+#library-form {
+    height: var(--card-height);
+    width: var(--card-width);
+    background-color: var(--primary-colour);
+    color: var(--primary-text-colour);
+    border-radius: var(--common-border-radius);
+    margin: var(--common-card-spacing);
+    padding: var(--card-padding);
+}
+
+.form-section {
+    display: flex;
+    align-items: center;
+}
+
+.form-header {
+    text-align: center;
+    font-weight: 600;
+    font-size: 1.2em;
+    margin: 0.3rem;
+}
+
+.form-section {
+    margin: 0.3rem;
+}
+
+#library-form label {
+    width: 5rem;
+    text-align: right;
+    margin-right: 0.3rem;
+}
+
+#library-form input[type="text"] {
+    font-size: 1.1rem;
+    border-radius: var(--common-border-radius);
+    background-color: var(--form-text-input-bg-col);
+    border: 0px;
+    padding: 0.2rem;
+}
+
+.form-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 1rem;
+    padding-top: 0.2rem;
+}
+
+#library-form button {
+    background-color: var(--form-button-bg-col);
+    color: var(--primary-text-colour);
+    font-size: 1.1rem;
+    border-radius: var(--common-border-radius);
+    padding: 0.25rem 1rem;
+    border: 2px solid var(--form-button-bg-col);
+}
+
+#library-form button:hover {
+    border: 2px solid white;
+}
+
+#library {
+    display: flex;
+    gap: var(--common-card-spacing);
+    padding: var(--common-card-spacing);
+}
+
+.book {
+    position: relative;
+    background-color: var(--book-bg-col);
+    border-left: 5px solid var(--primary-colour);
+    padding: var(--card-padding);
+    border-radius: var(--common-border-radius);
+}
+
+.book svg {
+    fill: var(--form-button-bg-col);
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    width: var(--trash-ico-size);
+    height: auto;
+}
+
+.book svg:hover {
+    fill: white;
+    background-color: var(--form-button-bg-col);;
+    cursor: pointer;
+    border-radius: 100%;
+}
+
+.book .title {
+    font-size: 1.2em;
+    color: var(--book-title-col);
+}
+
+.book .author {
+    color: var(--book-author-col);
+}
+
+.book .id {
+    font-size: 0.8em;
+    color: var(--book-id-col);
 }
