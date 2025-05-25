@@ -23,7 +23,7 @@
     --form-text-input-text-col: black;
     --form-button-bg-col: var(--main-col-dark);
 
-    --top-row-height: calc(var(--card-height) + ((var(--card-padding) + var(var(--common-card-spacing)) * 2)));
+    --top-row-height: calc(var(--card-height) + ((var(--card-padding) + (var(--common-card-spacing)) * 2)));
 
     --trash-ico-size: 1.5rem;
     --trash-ico-col: var(--main-col-mid);
@@ -124,6 +124,7 @@ body {
     padding: var(--card-padding);
     border-radius: var(--common-border-radius);
     width: var(--card-width);
+    min-height: 4rem;
 }
 
 .del-ico {
@@ -143,6 +144,26 @@ body {
 }
 
 .del-ico svg {
+    pointer-events: none;
+}
+
+.read-ico {
+    fill: var(--trash-ico-col);
+    position: absolute;
+    right: 5px;
+    top: 29px;
+    width: var(--trash-ico-size);
+    height: var(--trash-ico-size);
+}
+
+.read-ico:hover {
+    fill: white;
+    background-color: var(--trash-ico-col);;
+    cursor: pointer;
+    border-radius: 100%;
+}
+
+.read-ico svg {
     pointer-events: none;
 }
 

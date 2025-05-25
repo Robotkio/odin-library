@@ -6,7 +6,16 @@ function Book(title = "", author = "") {
     if (!new.target) { throw Error("new not used"); }
     this.title = title;
     this.author = author;
+    this.read = false;
     this.id = crypto.randomUUID();
+
+    this.toggleRead = function() {
+        if(this.read) {
+            this.read = false;
+        } else {
+            this.read = true;
+        }
+    }
 }
 
 btnAddBook.addEventListener("click", (event) => {
@@ -18,6 +27,8 @@ myLibrary.push(new Book("Awesome Example Book", "Fake Author Esq."));
 
 updateLibraryDisplay();
 
+/* reads values from the form, creates a book, adds it to myLibrary 
+   and updates the display */
 function addBookToLibrary() {
     let title = document.getElementById("title").value;
     let author = document.getElementById("author").value;
@@ -27,6 +38,8 @@ function addBookToLibrary() {
     updateLibraryDisplay();
 }
 
+/* takes the id of a book, removes it from myLibrary and updates the
+   display */
 function removeBookFromLibrary(id) {
     myLibrary = myLibrary.filter((book) => {
         return book.id == id ? null : book;
@@ -34,6 +47,7 @@ function removeBookFromLibrary(id) {
     updateLibraryDisplay();
 }
 
+/* re-draws all books in myLibrary into the library element */
 function updateLibraryDisplay() {
     libraryDisplay.innerHTML = "";
     myLibrary.forEach((book) => {
@@ -41,6 +55,8 @@ function updateLibraryDisplay() {
     });
 }
 
+/* take a book object and returns a "card" element that can 
+   display the book */
 function buildBookCard(book) {
     // create containing card element
     let containing = document.createElement("div");
@@ -69,6 +85,35 @@ function buildBookCard(book) {
     delIcoSvg.appendChild(delIcoPath);
     delIco.appendChild(delIcoSvg);
     containing.appendChild(delIco);
+
+    // create read icon element
+    let readIco = document.createElement("div");
+    readIco.classList.add("read-ico");
+
+    let readIcoSvg = document.createElementNS("http://www.w3.org/2000/svg", "svg"); 
+    readIcoSvg.setAttribute("xmlns", "http://www.w3.org/2000/svg");
+    readIcoSvg.setAttribute("viewbox", "0 0 24 24");
+
+    let readIcoTitle = document.createElement("title");
+    let readIcoPath = document.createElementNS("http://www.w3.org/2000/svg", "path");
+
+    if (book.read) {
+        readIcoTitle.innerText = "bookmark-check-outline";
+        readIcoPath.setAttribute("d", "M9.47 9.65L8.06 11.07L11 14L16.19 8.82L14.78 7.4L11 11.18M17 3H7C5.9 3 5 3.9 5 5L5 21L12 18L19 21V5C19 3.9 18.1 3 17 3M17 18L12 15.82L7 18V5H17Z");
+    } else {
+        readIcoTitle.innerText = "bookmark-remove";
+        readIcoPath.setAttribute("d", "M17,3A2,2 0 0,1 19,5V21L12,18L5,21V5C5,3.89 5.9,3 7,3H17M8.17,8.58L10.59,11L8.17,13.41L9.59,14.83L12,12.41L14.41,14.83L15.83,13.41L13.41,11L15.83,8.58L14.41,7.17L12,9.58L9.59,7.17L8.17,8.58Z");
+    }
+
+    readIco.addEventListener("click", () => {
+        book.toggleRead();
+        updateLibraryDisplay();
+    });
+
+    readIcoSvg.appendChild(readIcoTitle);
+    readIcoSvg.appendChild(readIcoPath);
+    readIco.appendChild(readIcoSvg);
+    containing.appendChild(readIco);
 
     // create title element
     let title = document.createElement("div");
