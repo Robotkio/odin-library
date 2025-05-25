@@ -28,8 +28,7 @@ updateLibraryDisplay();
 function addBookToLibrary() {
     let title = document.getElementById("title").value;
     let author = document.getElementById("author").value;
-    let book = new Book(title, author);
-    myLibrary.push(book);
+    myLibrary.push(new Book(title, author));
 
     updateLibraryDisplay();
 }
@@ -57,7 +56,7 @@ function buildBookCard(book) {
     // create containing card element
     let containing = document.createElement("div");
     containing.classList.add("book");
-    containing.setAttribute("id", book.id);
+    containing["id"] = book.id;
 
     // create the delete icon element
     let delIco = document.createElement("div");
