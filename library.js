@@ -28,7 +28,7 @@ function addBookToLibrary() {
 }
 
 function removeBookFromLibrary(id) {
-    myLibrary = myLibrary.filter((book, index, array) => {
+    myLibrary = myLibrary.filter((book) => {
         return book.id == id ? null : book;
     });
     updateLibraryDisplay();
@@ -42,10 +42,12 @@ function updateLibraryDisplay() {
 }
 
 function buildBookCard(book) {
+    // create containing card element
     let containing = document.createElement("div");
     containing.classList.add("book");
     containing.setAttribute("id", book.id);
 
+    // create the delete icon element
     let delIco = document.createElement("div");
     delIco.classList.add("del-ico");
     
@@ -68,16 +70,19 @@ function buildBookCard(book) {
     delIco.appendChild(delIcoSvg);
     containing.appendChild(delIco);
 
+    // create title element
     let title = document.createElement("div");
     title.classList.add("title");
     title.innerText = book.title;
     containing.appendChild(title);
 
+    // create author element
     let author = document.createElement("div");
     author.classList.add("author");
     author.innerText = book.author;
     containing.appendChild(author);
 
+    // create id element
     let id = document.createElement("div");
     id.classList.add("id");
     id.innerText = book.id;
