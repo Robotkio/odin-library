@@ -36,9 +36,7 @@ function addBookToLibrary() {
 /* takes the id of a book, removes it from myLibrary and updates the
    display */
 function removeBookFromLibrary(id) {
-    myLibrary = myLibrary.filter((book) => {
-        return book.id == id ? null : book;
-    });
+    myLibrary = myLibrary.filter(book => book.id !== id );
     updateLibraryDisplay();
 }
 
