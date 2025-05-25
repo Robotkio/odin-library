@@ -10,11 +10,7 @@ function Book(title = "", author = "") {
     this.id = crypto.randomUUID();
 
     this.toggleRead = function() {
-        if(this.read) {
-            this.read = false;
-        } else {
-            this.read = true;
-        }
+        this.read = !this.read;
     }
 }
 
