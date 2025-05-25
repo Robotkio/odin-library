@@ -1,27 +1,32 @@
 :root {
+    --main-col-mid: rgb(133, 116, 79);
+    --main-col-dark: rgb(53, 38, 16);
+    --main-col-light: rgb(247, 244, 224);
+
     --card-height: 135px;
     --card-width: 350px;
     --card-padding: 0.7rem;
     --common-border-radius: 0.5rem;
     --common-card-spacing: 1rem;
 
-    --body-background-col: rgb(94, 94, 94);
+    --body-background-col: rgb(189, 189, 189);
 
-    --primary-colour: rgb(83, 133, 79);
+    --primary-colour: var(--main-col-mid);
     --primary-text-colour: white;
 
-    --book-bg-col: rgb(234, 247, 224);
+    --book-bg-col: var(--main-col-light);
     --book-title-col: rgb(0, 0, 0);
     --book-author-col: rgb(44, 44, 44);
     --book-id-col: rgb(136, 136, 136);
 
     --form-text-input-bg-col: white;
     --form-text-input-text-col: black;
-    --form-button-bg-col: rgb(19, 53, 16);
+    --form-button-bg-col: var(--main-col-dark);
 
     --top-row-height: calc(var(--card-height) + ((var(--card-padding) + var(var(--common-card-spacing)) * 2)));
 
     --trash-ico-size: 1.3rem;
+    --trash-ico-col: var(--main-col-mid);
 }
 
 body {
@@ -120,7 +125,7 @@ body {
 }
 
 .del-ico {
-    fill: var(--form-button-bg-col);
+    fill: var(--trash-ico-col);
     position: absolute;
     right: 5px;
     top: 5px;
@@ -130,7 +135,7 @@ body {
 
 .del-ico:hover {
     fill: white;
-    background-color: var(--form-button-bg-col);;
+    background-color: var(--trash-ico-col);;
     cursor: pointer;
     border-radius: 100%;
 }
