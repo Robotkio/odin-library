@@ -5,7 +5,7 @@
     --common-border-radius: 0.5rem;
     --common-card-spacing: 1rem;
 
-    --body-background-col: white;
+    --body-background-col: rgb(94, 94, 94);
 
     --primary-colour: rgb(83, 133, 79);
     --primary-text-colour: white;
@@ -90,6 +90,7 @@ body {
 }
 
 #library-form button {
+    cursor: pointer;
     background-color: var(--form-button-bg-col);
     color: var(--primary-text-colour);
     font-size: 1.1rem;
@@ -104,6 +105,7 @@ body {
 
 #library {
     display: flex;
+    flex-wrap: wrap;
     gap: var(--common-card-spacing);
     padding: var(--common-card-spacing);
 }
@@ -114,26 +116,32 @@ body {
     border-left: 5px solid var(--primary-colour);
     padding: var(--card-padding);
     border-radius: var(--common-border-radius);
+    width: var(--card-width);
 }
 
-.book svg {
+.del-ico {
     fill: var(--form-button-bg-col);
     position: absolute;
     right: 5px;
     top: 5px;
     width: var(--trash-ico-size);
-    height: auto;
+    height: var(--trash-ico-size);
 }
 
-.book svg:hover {
+.del-ico:hover {
     fill: white;
     background-color: var(--form-button-bg-col);;
     cursor: pointer;
     border-radius: 100%;
 }
 
+.del-ico svg {
+    pointer-events: none;
+}
+
 .book .title {
     font-size: 1.2em;
+    font-weight: 600;
     color: var(--book-title-col);
 }
 
